@@ -1,7 +1,0 @@
-.v-enter-acrive, .v-leave-active {
-  transition: apacity 1s;
-}
-/* apacity:0から1へのフェードイン&フェードアウト */
-.v-enter, .v-leave {
-  opacity: 0;
-}
