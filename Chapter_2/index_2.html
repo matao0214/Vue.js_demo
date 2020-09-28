@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="2.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <!-- ここにコードを記入！ -->
+    <p>{{ message.value }}</p>
+    <p>{{message.value.length}}</p>
+    <p>{{ list[0] }}</p>
+    <p>{{ list[num] }}</p>
+
+    <input type="text" v-bind:value="message">
+
+
+    <!-- DOMのtextContentプロパティにバインド-->
+    <div v-bind:textContent.prop="message">...</div>
+    <!-- DOMのscrollTopプロパティにバインド-->
+    <div v-bind:scroll-top.prop="scroll">...</div>
+
+
+    <!-- countプロパティを表示する-->
+    <p>{{message.count}}回クリックしたよ！</p>
+    <!--このボタンを押すとincrementメソッドが呼び出される-->
+    <button v-on:click="increment">カウントを増やす</button>
+
+    <p v-bind:class="csObject">Class</p>
+    <p v-bind:style="csObject">Style</p>
+
+    <img v-bind="item">
+
+    <p>
+      <svg xmlns="http://www.w3.org/2000/svg" version: "1.1">
+        <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink"/>
+      </svg>
+      <input type="range" min="0" max="100" v-model="radius">
+    </p>
+
+    <div v-if="ok">v-if条件による描画</div>
+    <div v-show="ok">v-show条件による描画</div>
+
+    <template v-if="ok">
+      <header>タイトル</header>
+      <div>コンテンツ</div>
+    </template>
+
+
+    <div v-if="type === 'A'">typeはA</div>
+    <div v-else-if="type === 'B'">typeはB</div>
+    <div v-else>全ての条件を満たさなかった</div>
+
+    <div v-if="loaded" key="content-visible">content</div>
+    <div v-else key="content-loading">loading now...</div>
+
+
+    <ul>
+      <li v-for="item in list" v-bind:key="item.id">
+        ID.{{item.id}}{{item.name}}{{item.HP}}
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="item in list"
+        v-bind:key="item.id"
+        v-bind:class="{tuyoi: item.hp > 300 }">
+        ID.{{item.id}}{{item.name}}HP.{{item.HP}}
+        <span v-if="item.HP > 300">強い！</span>
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="item in list"
+      v-bind:key="item.id"
+      v-if="item.HP < 300">
+      ID.{{item.id}}{{item.name}}HP.{{item.HP}}
+    </li>
+    </ul>
+
+
+    <!-- このフォームの入力値を新しいモンスターの名前に使う -->
+    名前 <input v-model="name">
+    <button v-on:click="doAdd">モンスターを追加</button>
+    <ul>
+      <li v-for="item in list" v-bind:key="item.id">
+        ID.{{item.id}}{{item.name}}HP.{{item.HP}}
+      </li>
+    </ul>
+
+    
+    <ul>
+      <li v-for="(item, index) in list" v-bind:key="item.id">
+        ID. {{item.id}} {{item.name}} HP.{{item.HP}}
+        <!--削除ボタンをv-forリスト内に作成-->
+        <button v-on:click="doRemove(index)">モンスターを削除</button>
+      </li>
+    </ul>
+    
+
+    <ul>
+      <li v-for="(item, index) in list" v-bind:key="item.id" v-if="item.HP">
+        ID. {{item.id}} {{item.name}} HP. {{item.HP}}
+        <span v-if="item.HP < 50">瀕死！</span>
+        <button v-on:click="doAttack(index)">攻撃する</button>
+      </li>
+    </ul>
+
+
+    <select v-for="monster in monsters">
+      {{ monster }}
+    </select>
+
+
+    <span v-for="item in 15">
+      {{item}}
+    </span>
+    
+    
+    <p>
+      <span v-for="item in [1, 5, 10, 15]">
+        {{item}}
+      </span>
+    </p>
+
+
+    <span v-for="item in text">
+      {{text}}
+    </span>
+
+
+    <ul>
+      <li v-for="(item, index) in list" v-bind:key="item.id">
+        ID. {{item.id}} {{item.name}} HP. {{item.hp}}
+      </li>
+    </ul>
+
+    <p ref="hello">Hello</p>
+
+    <p v-bind:href="url" v-pre>
+      Hello {{message.value}}
+    </p>
+
+
+    <a v-bind:href="url" v-once>
+      Hello {{message.value}}
+    </a>
+    <p>
+      <span v-text="message.value"></span>
+    </p>
+    
+    <p>
+      <span v-html="html"></span>
+    </p>
+
+    
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+  <script src="2.js"></script>
+</body>
+</html>
