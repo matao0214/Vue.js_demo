@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="4.css">  <!-- 要修正！ -->
+</head>
+<body>
+  <div id="app">
+   <!-- cssとjsの読み込みを修正！ -->
+   <!-- ここにコードを記入！ -->
+
+   <p>
+     {{ width }}の半分は{{ halfWidth }}
+   </p>
+
+
+   <p> X: {{ halfPoint.x }} </p>
+   <p> Y: {{ halfPoint.y }} </p>
+
+
+
+   <p>
+     <input v-model.number="width"> {{width}}
+     <input v-model.number="halfWidth"> {{halfWidth}}
+   </p>
+
+  
+  </div>
+  <script
+  src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="4.js"></script>  <!-- 要修正！ -->
+</body>
+</html>
