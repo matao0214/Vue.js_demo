@@ -55,3 +55,76 @@ new Vue ({
 
   }
 })
+
+new Vue({
+  el: "#app2",
+
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus()
+      }
+    }
+  },
+
+
+
+
+  data: {
+
+    price: 19800,
+    list: [],
+    current: '',
+    topics: [
+      { value: 'vue', name: 'Vue.js' },
+      { value: 'jQuery', name: 'jQuery' }
+    ]
+  },
+
+
+  filters: {
+    localeNum: function(val) {
+      return val.toLocaleString()
+    },
+
+    filter: function(message, foo, num) {
+      console.log(message, foo, num)
+    },
+
+    round: function(val) {
+      return Math.round(val * 100) / 100
+    },
+
+    radian: function(val) {
+      return val * Math.PI / 180
+    }
+  },
+
+  watch: {
+    current: function(val) {
+      // GitHubのAPIからトピックのリポジトリを検索
+      axios.get('https://api.github.com/search/repositories', {
+        params: { q: 'topic:' + val }
+      }).then(function(response) {
+        this.list = response.data.items
+      }.bind(this))
+    }
+  }
+
+})
+
+new Vue ({
+  el: "#app4",
+  data: {
+    list: ['りんご', 'ばなな']
+  },
+
+  watch: {
+    list: function() {
+      console.log('通常：', this.list.offsetHeight)
+      this.$nextTick(function(){
+        console.log(('nextTick:', this.$refs.list.offsetHeight))
+      })
+    }
+  }
+})
