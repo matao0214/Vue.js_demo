@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="4.css">  <!-- 要修正！ -->
+</head>
+<body>
+  <div id="app">
+   <!-- cssとjsの読み込みを修正！ -->
+   <!-- ここにコードを記入！ -->
+
+   <p>
+     {{ width }}の半分は{{ halfWidth }}
+   </p>
+
+
+   <p> X: {{ halfPoint.x }} </p>
+   <p> Y: {{ halfPoint.y }} </p>
+
+
+
+   <p>
+     <input v-model.number="width"> {{width}}
+     <input v-model.number="halfWidth"> {{halfWidth}}
+   </p>
+
+
+
+   <p>
+     <input v-model.number="budget">円以下に絞り込む
+     <input v-model.number="limit">件を表示
+     <p> {{matched.length}}  件中  {{ limited.length }}  </p>
+     <button v-on:click="order=!order">切り替え</button>
+     <ul>
+       <li v-for="item in limited" v-bind:key="item.id">
+         {{ item.name }}  {{ item.price }}円
+       </li>
+     </ul>
+   </p>
+  </div>
+
+  <div id="app2">
+    <select v-model="current">
+      <option v-for="topic in topics" v-bind:value="topic.value">
+        {{ topic.name }}
+      </option>
+    </select>
+    <div v-for="item in list"> {{ item.full_name }} </div>
+
+
+    <p>
+      {{  price | localeNum  }}円
+    </p>
+
+    <p></p>
+      180度は {{ 180 | radian | round }}  ラジアンだよ
+    </p>
+  </div>
+  
+  <div id="app4">
+    <p>
+      <button v-on:click="list.push(list.length+1)">追加</button>
+      <ul ref="list">
+        <li v-for="item in list"> {{ item }} </li>
+      </ul>
+
+    </p>
+  </div>
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+ 
+
+
+
+
+
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+  <script src="4.js"></script>  <!-- 要修正！ -->
+</body>
+</html>
