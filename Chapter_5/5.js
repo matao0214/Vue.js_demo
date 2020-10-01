@@ -20,6 +20,7 @@ new Vue({
 
   data: {
     message: 'Hello!'
+    hello: "HELLO!"
   },
 
   components: {
