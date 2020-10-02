@@ -19,7 +19,7 @@ new Vue({
   el: "#app",
 
   data: {
-    message: 'Hello!'
+    message: 'Hello!',
     hello: "HELLO!"
   },
 
