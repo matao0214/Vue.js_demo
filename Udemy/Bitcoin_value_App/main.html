@@ -7,13 +7,31 @@
 </head>
 <body>
   <div id="app">
-   <!-- cssとjsの読み込みを修正！ -->
-   <!-- ここにコードを記入！ -->
-   <h1>デバッグ</h1>
+    <h2>
+      Bitcoin price
+    </h2>
+  
+    <section v-if="hasError">
+      ERROR
+    </section>
+  
+    <section v-else>
+      <div v-if="loading">
+        Loading...
+      </div>
+      <div v-else>
+        <ul v-cloak>
+          <li v-for=" (rate, currency) in bpi">
+            {{ currency }}: {{ rate.rate_float | currencyDecymal }}
+          </li>
+        </ul>
+      </div>
+    </section>
   
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+  
   <script src="main.js"></script>  <!-- 要修正！ -->
 </body>
 </html>
