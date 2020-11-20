@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" href="main.css">  <!-- 要修正！ -->
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="color in colors">
+        {{ color.name }}
+      </li>
+    </ul>
+  
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+  <script src="main.js"></script>  <!-- 要修正！ -->
+</body>
+</html>
