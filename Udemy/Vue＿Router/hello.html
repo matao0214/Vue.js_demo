@@ -6,21 +6,18 @@
   </head>
   <body>
     <div id="app">
-
       <!-- ページ遷移の情報を記述 -->
       <router-link to="/top">Go to Top</router-link>
       <router-link to="/users">Go to User</router-link>
-
+      <router-view></router-view>
     </div>
- 
+
     <script src="https://unpkg.com/vue@2.6.10"></script>
     <script src="https://unpkg.com/vue-router@3.0.6"></script>
-    
-
     <script>
       // ページごとのコンポーネントを作成
-      const Top = { template: <div>Top</div>}
-      const User = { template: <div>User</div>}
+      const Top = { template: '<div>Top</div>'}
+      const User = { template: '<div>User</div>'}
 
       // routerインスタンスの作成
       const router = new VueRouter({
@@ -37,10 +34,12 @@
       })
 
       // Vueインスタンスの作成
-      const app = new Vue ({
+      const app = new Vue({
         // 上で定義したrouterインスタンスを定義
-        router: router
+        // router: router
+        router
       }).$mount('#app')
     </script>
+
   </body>
 </html>
